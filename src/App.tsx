@@ -6,7 +6,7 @@ type Todo = {
   completed: boolean;
 };
 
-const API_BASE = import.meta.env.VITE_API_BASE ?? "/api";
+const API_BASE = import.meta.env.VITE_API_BASE ?? "http://34.143.194.153:5000";
 
 type Styles = {
   page: React.CSSProperties;
