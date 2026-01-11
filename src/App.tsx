@@ -6,7 +6,7 @@ type Todo = {
   completed: boolean;
 };
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 type Styles = {
   page: React.CSSProperties;
@@ -69,7 +69,7 @@ export default function App() {
 
       const data = (await res.json()) as Todo[];
       setItems(Array.isArray(data) ? data : []);
-      setInfo("โหลดรายการสำเร็จ ✅");
+      setInfo("โหลดรายการสำเร็จ");
     } catch (e: any) {
       setError(e?.message || "โหลดรายการไม่สำเร็จ");
     } finally {
@@ -148,8 +148,6 @@ export default function App() {
         const t = await res.text().catch(() => "");
         throw new Error(`DELETE /todos/${id} failed (${res.status}) ${t}`);
       }
-
-      // docs: 204 No Content
       setItems((prev) => prev.filter((x) => x.id !== id));
       setInfo("ลบสำเร็จ");
     } catch (e: any) {
